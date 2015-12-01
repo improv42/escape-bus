@@ -1,24 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-xs-4 col-xs-offset-4 text-center well">
+    <h1>Escape Bus</h1>
+    <h2>You are standing at...</h2>
+    <p><%= @location.my_location %></p>
+    <div id="map-canvas" style="height:400px;width:400px;margin:0;padding:0;"></div>
 
-<h2>You are standing at...</h2>
-<p><%= @location.my_location %></p>
+    <h2>The closest buses are...</h2>
 
-<h2>The closest buses are...</h2>
+    <% if @nearby_buses.empty? %>
+      <p>...not really that close. Time to walk, bike, taxi, or Uber.</p>
+    <% end %>
 
-<% if @nearby_buses.empty? %>
-  <p>...not really that close. Time to walk, bike, taxi, or Uber.</p>
-<% end %>
+    <% @nearby_buses.each do |bus| %>
+      <p>
+        <strong>Route: </strong><%= bus['ROUTE'] %> - <%= bus['DIRECTION'] %>
+        <br>
+        <strong>Bus Number: </strong><%= bus['VEHICLE'] %>
+        <br>
+        <strong>Next Stop: </strong><%= bus['TIMEPOINT'] %>
+        <br>
+      </p>
+    <% end %>
 
-<% @nearby_buses.each do |bus| %>
-  <p>
-    <strong>Route: </strong><%= bus['ROUTE'] %> - <%= bus['DIRECTION'] %>
-    <br>
-    <strong>Bus Number: </strong><%= bus['VEHICLE'] %>
-    <br>
-    <strong>Next Stop: </strong><%= bus['TIMEPOINT'] %>
-    <br>
-  </p>
-<% end %>
+    <%= link_to 'Edit', edit_location_path(@location) %> |
+    <%= link_to 'Back', locations_path %>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<script type="text/javascript">
+   function initialize() {
+      var userLocation = new google.maps.LatLng(<%= @location.latitude %>, <%= @location.longitude %>);
+
+     var mapOptions = {
+       center: userLocation,
+       zoom: 15
+     };
+     var map = new google.maps.Map(document.getElementById('map-canvas'),
+         mapOptions);
+
+     var userMarker = new google.maps.Marker({
+      position: userLocation,
+      map: map,
+      animation: google.maps.Animation.DROP,
+      title: 'You are here'
+     });
+   }
+   google.maps.event.addDomListener(window, 'load', initialize);
+ </script>
