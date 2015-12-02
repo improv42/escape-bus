@@ -1,2 +1,16 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
+
+.jumbotron {
+  background-image: url('escape_bus_jumbotron.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  padding: 13%;
+  margin-bottom: 0;
+}
+
+#logo {
+  width: 65%;
+  padding: 10px;
+}

@@ -1,5 +1,7 @@
 <div class="row">
-  <h1 class="text-center">Escape Bus</h1>
+  <div class="col-xs-6 col-xs-offset-3">
+    <img src="<%= image_path 'escape_bus_logo.png' %>" alt="Escape Bus Logo" id="logo" class="image-responsive center-block">
+  </div>
   <div class="col-xs-6 col-xs-offset-3 text-center well">
     <h2>You are standing at...</h2>
     <p><%= @location.my_location %></p>
@@ -10,17 +12,26 @@
     <% if @nearby_buses.empty? %>
       <p>...not really that close. Time to walk, bike, taxi, or Uber.</p>
     <% end %>
-
-    <% @nearby_buses.each do |bus| %>
-      <p>
-        <strong>Route: </strong><%= bus['ROUTE'] %> - <%= bus['DIRECTION'] %>
-        <br>
-        <strong>Bus Number: </strong><%= bus['VEHICLE'] %>
-        <br>
-        <strong>Next Stop: </strong><%= bus['TIMEPOINT'] %>
-        <br>
-      </p>
-    <% end %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2">
+        <% @nearby_buses.each do |bus| %>
+          <ul class="list-inline">
+              <div class="panel panel-default">
+            <li>
+                <div class="panel-body">
+                    <strong>Route: </strong><%= bus['ROUTE'] %> - <%= bus['DIRECTION'] %>
+                    <br>
+                    <strong>Bus Number: </strong><%= bus['VEHICLE'] %>
+                    <br>
+                    <strong>Next Stop: </strong><%= bus['TIMEPOINT'] %>
+                    <br>
+                </div>
+            </li>
+              </div>
+          </ul>
+        <% end %>
+      </div>
+    </div>
 
     <%= link_to 'Edit', edit_location_path(@location) %> |
     <%= link_to 'Back', locations_path %>
