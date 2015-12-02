@@ -19,7 +19,33 @@
         </div>
         <div class="field form-group">
           <%= f.label :city %><br>
-          <%= f.text_field :city, class: 'form-control' %>
+          <%= f.select :city, options_for_select([
+            'Atlanta',
+            'Alpharetta',
+            'Avondale Estates',
+            'Chamblee',
+            'Clarkston',
+            'College Park',
+            'Decatur',
+            'Doraville',
+            'Dunwoody',
+            'East Point',
+            'Ellenwood',
+            'Fairburn',
+            'Forest Park',
+            'Hapeville',
+            'Jonesboro',
+            'Lake City',
+            'Lovejoy',
+            'Lithonia',
+            'Morrow',
+            'Palmetto',
+            'Riverdale',
+            'Roswell',
+            'Sandy Springs',
+            'Stone Mountain',
+            'Union City'
+          ]), {}, class: "form-control" %>
         </div>
       </div>
       <div class="form-actions text-center">
