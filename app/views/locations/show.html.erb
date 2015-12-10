@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-xs-6 col-xs-offset-3">
+  <div class="col-sm-6 col-sm-offset-3">
     <img src="<%= image_path 'escape_bus_logo.png' %>" alt="Escape Bus Logo" id="logo" class="image-responsive center-block">
   </div>
-  <div class="col-xs-6 col-xs-offset-3 text-center well">
+  <div class="col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1 text-center well">
     <h2>You are standing at...</h2>
     <p><%= @location.my_location %></p>
-    <div id="map-canvas" style="height:450px;width:450px;margin:auto;padding:0;"></div>
+    <div id="map-canvas" class="img-responsive"></div>
 
     <h2>The closest buses are...</h2>
 
@@ -13,7 +13,7 @@
       <p>...not really that close. Time to walk, bike, taxi, or Uber.</p>
     <% end %>
     <div class="row">
-      <div class="col-xs-8 col-xs-offset-2">
+      <div class="col-sm-8 col-sm-offset-2">
         <% @nearby_buses.each do |bus| %>
           <ul class="list-inline">
               <div class="panel panel-default">
