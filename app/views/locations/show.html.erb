@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    <img src="<%= image_path 'escape_bus_logo.png' %>" alt="Escape Bus Logo" id="logo" class="image-responsive center-block">
+    <a href="<%= new_location_path %>"><img src="<%= image_path 'escape_bus_logo.png' %>" alt="Escape Bus Logo" id="logo" class="img-responsive center-block"></a>
   </div>
   <div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 text-center well">
     <h2>You are standing at...</h2>
@@ -34,7 +34,7 @@
     </div>
 
     <%= link_to 'Edit', edit_location_path(@location) %> |
-    <%= link_to 'Back', locations_path %>
+    <%= link_to 'Back', new_location_path %>
   </div>
 </div>
 
