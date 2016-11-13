@@ -1,1 +1,5 @@
-[![Build Status](https://travis-ci.org/improv42/escape-bus.svg?branch=master)](https://travis-ci.org/improv42/escape-bus)
+# Escape Bus - Real Time Bus Tracking - Atlanta
+
+Using both the Google Maps and the MARTA API, we put together a way to escape from anywhere in Atlanta. 
+
+Find the closest bus and GO!
